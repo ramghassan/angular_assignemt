@@ -1,0 +1,31 @@
+<div ng-transclude></div>
+<table>
+<thead>
+<tr>
+<td>YEAR</td>
+<td>THEFT UNDER</td>
+<td>THEFT OVER</td>
+<td>CUSTOMIZE</td>
+</tr>
+</thead>
+<tr
+ng-repeat="y in temp  | limitTo: pgSz:3*curPage">
+<td>{{y.year}}</td>
+<td>{{y.under}}</td>
+<td>{{y.over}}</td>
+<td><button ng-click="Edit(y.year,y.under,y.over)">Edit</button><button ng-click="Delete(y.year)">Delete</button></td>
+</td>
+</tr>
+</table>
+<br>
+<div id="buttons">
+  <button id="try" type="button" class="btn btn-primary" ng-disabled="curPage == 0"
+    ng-click="curPage=curPage-1"> &lt; PREV</button>
+
+     <button ng-repeat="x in ary" type="button"  class="btn btn-primary"
+     ng-click="$parent.curPage=x-1">{{x}}</button>
+
+    <button type="button" class="btn btn-primary"
+    ng-disabled="curPage >= temp.length/3 - 1"
+    ng-click="curPage = curPage+1">NEXT &gt;</button>
+</div>

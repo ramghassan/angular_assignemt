@@ -1,0 +1,77 @@
+<html ng-app="proj" ng-cloak>
+<head>
+  <title>Crime Project</title>
+ <link href="css/style1.css" rel="stylesheet">
+</head>
+<body>
+  <div ng-controller="myCtrl" class="center">
+          <div id="head">
+          <h1>CRIME DATA</h1>
+          </div>
+
+          <form name="userValid">
+  <div>
+           <label>YEAR</label>
+           <select ng-model="year">
+           <option><--SelectOption--></option>
+           <option  ng-repeat="x in datas">{{x.year}}</option>
+           </select>
+           <button ng-click="validSearch(year)">SEARCH</button>
+
+           <br><br>
+
+          <label >THEFT TYPE</label>
+          <select ng-model="theft">
+          <option><--SelectOpti</option>
+          <option>over</option>
+          <option>under</option>
+          </select>
+
+          <label>RANGE VALUE</label>
+          <input type="text" name="values" ng-model="theftValue"
+          ng-required="true"  ng-pattern="/1-100000/" />
+
+          <span class="error-message" ng-show="userValid.values.$error.pattern">Must be a between 1-100000</span>
+          <span ng-show="myForm.values.$error.required">This field is required!</span>
+
+          <br><br>
+          <button ng-click="validFinding(theft,theftValue)">SEARCH1</button>
+ </div>
+  <br><br>
+    <div tabl  class="center">
+      <label>Sort Option</label>
+      <select ng-model="optionValue">
+      <option><--SelectOption--></option>
+      <option>year</option>
+      <option>over</option>
+      <option>under</option>
+      </select>
+
+      <label>Order By</label>
+      <select ng-model="sortValue">
+      <option><--SelectOption--></option>
+      <option>Ascending</option>
+      <option>Descending</option>
+      </select>
+ <br><br>
+<button ng-click="validSorting(optionValue,sortValue)">SEARCH1</button>
+</div>
+</form>
+
+<div ng-controller="myCtrl2" ng-show="hide" id="new" class="center">
+
+      <label>Year:{{edit1}}</label>
+       <br>
+       <label>Under value</label>
+       <input ng-model="edit2" ng-value="edit2"/><br>
+       <label>Over  value</label>
+       <input ng-model="edit3" ng-value="edit3"/><br><br>
+       <button ng-click="modified(edit2,edit3)">Modify</button><br>
+
+  </div>
+</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <script src="js/projang.js"></script>
+</body>
+</html>
